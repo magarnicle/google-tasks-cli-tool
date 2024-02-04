@@ -1,11 +1,15 @@
+import logging
 from googleapiclient.discovery import build
 
+logger = logging.getLogger(__name__)
+
 def list_tasks(creds):
-    service = build('tasks', 'v1', credentials=creds)
+    service = build('tasks', 'v1', credentials=creds, cache_discovery=False)
     results = service.tasklists().list(maxResults=10).execute()
     items = results.get('items', [])
-
+    
     if not items:
+        logger.info("No task lists found")
         print('\nNo task lists found.\n')
         return
 

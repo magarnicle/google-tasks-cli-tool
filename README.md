@@ -1,4 +1,4 @@
-<p align="center"><a href="https://ideacat.ro" target="_blank"><img src="https://raw.githubusercontent.com/ideacatlab/google-tasks-cli-tool/master/.github/images/gtask.png" width="400"></a></p>
+<p align="center"><a href="https://ideacat.ro" target="_blank"><img src="https://raw.githubusercontent.com/ideacatlab/google-tasks-cli-tool/master/.github/images/gtask.png" width="100%"></a></p>
 
 # Google Tasks CLI Tool
 
@@ -88,6 +88,25 @@ You're logged in. Here are the available commands:
 Enter a command number: 0
 Exiting...
 ```
+
+## Log Configuration
+
+The Google Tasks CLI tool is configured to log important events and errors to `storage/logs/gtask.log`. The logging level and format can be adjusted in the `log.conf` file.
+
+### Changing the Log Level
+
+To change the log level, update the `level` under `[logger_root]` and `[handler_fileHandler]` in `log.conf`. Available log levels include:
+
+- DEBUG: Detailed information, typically of interest only when diagnosing problems.
+- INFO: Confirmation that things are working as expected.
+- WARNING: An indication that something unexpected happened, or indicative of some problem in the near future.
+- ERROR: Due to a more serious problem, the software has not been able to perform some function.
+- CRITICAL: A serious error, indicating that the program itself may be unable to continue running.
+
+### Log Format
+
+The log format can be customized by changing the `format` under `[formatter_fileFormatter]`. The default format includes the timestamp, logger name, log level, and message.
+
 
 ## Future Enhancements
 

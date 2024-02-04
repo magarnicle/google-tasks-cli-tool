@@ -1,3 +1,4 @@
 .env
 token.pickle
 cmd/__pycache__
+storage/logs/
