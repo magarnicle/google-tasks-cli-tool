@@ -30,7 +30,6 @@ def display_commands():
     return input("\nEnter a command number: ")
 
 def main():
-    # Check for '--clear' flag to clear the log file
     if "--clear" in sys.argv:
         clear_log_file()
         print("Log file cleared.")
@@ -40,7 +39,6 @@ def main():
     print("Welcome to the Google Tasks CLI Tool!\n")
     creds = None
 
-    # Check if already logged in
     if os.path.exists('token.pickle'):
         creds = authenticate_google_tasks()
         logger.info("User already logged in")

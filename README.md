@@ -93,6 +93,12 @@ Exiting...
 
 The Google Tasks CLI tool is configured to log important events and errors to `storage/logs/gtask.log`. The logging level and format can be adjusted in the `log.conf` file.
 
+A function `clear_log_file()` is added to clear the content of the gtask.log file. This function is called if the script is run with the `--clear` flag.
+
+```sh
+gtask --clear
+```
+
 ### Changing the Log Level
 
 To change the log level, update the `level` under `[logger_root]` and `[handler_fileHandler]` in `log.conf`. Available log levels include:
@@ -106,6 +112,7 @@ To change the log level, update the `level` under `[logger_root]` and `[handler_
 ### Log Format
 
 The log format can be customized by changing the `format` under `[formatter_fileFormatter]`. The default format includes the timestamp, logger name, log level, and message.
+
 
 
 ## Future Enhancements
