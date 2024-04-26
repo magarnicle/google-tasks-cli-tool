@@ -4,3 +4,5 @@ cmd/__pycache__
 storage/logs/
 storage/imported.txt
 todo_importer.py
+__pycache__
+*.egg-info
