@@ -15,6 +15,16 @@ DATE_FIELDS = [
 
 
 def list_tasks(creds):
+    tasks = _list_tasks(creds)
+    if not tasks:
+        logger.info("No task lists found")
+        print("No task lists found.\n")
+        return
+    for task in tasks:
+        print(task)
+
+
+def _list_tasks(creds):
     service = build("tasks", "v1", credentials=creds, cache_discovery=False)
     results = service.tasklists().list(maxResults=10).execute()
     items = results.get("items", [])
@@ -24,8 +34,9 @@ def list_tasks(creds):
         print("No task lists found.\n")
         return
 
+    all_tasks = []
     for item in items:
-        print(f"Task List: {item['title']} ({item['id']})")
+        all_tasks.append(f"Task List: {item['title']} ({item['id']})")
         tasks = service.tasks().list(tasklist=item["id"], showCompleted=False).execute()
         for task in tasks.get("items", []):
             text = ""
@@ -40,4 +51,5 @@ def list_tasks(creds):
                         text += task.get(field_name, "") or ""
                 else:
                     text += token
-            print(text)
+            all_tasks.append(text)
+    return all_tasks

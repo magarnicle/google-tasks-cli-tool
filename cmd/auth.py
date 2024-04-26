@@ -10,10 +10,13 @@ try:
 
     load_dotenv()
 except Exception:
-    with open(".env") as efile:
-        for line in efile.readlines():
-            k, v = line.rstrip("\n").split("=", maxsplit=1)
-            CONFIG[k] = v.strip('"')
+    from pathlib import Path
+
+    for line in (
+        Path(__file__).parent.joinpath(Path("../.env")).read_text().splitlines()
+    ):
+        k, v = line.split("=", maxsplit=1)
+        CONFIG[k] = v.strip('"')
 
 
 logger = logging.getLogger(__name__)
