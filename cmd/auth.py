@@ -52,7 +52,6 @@ def authenticate_google_tasks():
                     ],
                 }
             }
-            breakpoint()
             flow = InstalledAppFlow.from_client_config(client_config, SCOPES)
             # Suppress browser-related errors
             os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
